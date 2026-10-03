@@ -12,11 +12,13 @@ namespace Potions2026.DataStructures
     public class IngredientData : ScriptableObject
     {
         [SerializeField] private string _name;
-        [SerializeField] private string _description;
+        [SerializeField] [TextArea] private string _description;
+        [SerializeField] private FlavourProfileType _flavourProfile;
         [SerializeField] private SerializedDictionary<PreparationActionType, IngredientEssenceType> _essenceLookup;
 
         public string Name => _name;
         public string Description => _description;
+        public FlavourProfileType FlavourProfile => _flavourProfile;
         public bool IsValidPreparation(PreparationActionType peparationAction) => _essenceLookup.ContainsKey(peparationAction);
         public IngredientEssenceType EssenceFromPreparation(PreparationActionType peparationAction)
         {
@@ -32,5 +34,6 @@ namespace Potions2026.DataStructures
 
             return _essenceLookup[peparationAction];
         }
+        public bool HasEssences => _essenceLookup.Count > 0;
     }
 }

@@ -11,7 +11,7 @@ namespace Potions2026.DataStructures
     public class PotionRecipe : ScriptableObject
     {
         [SerializeField] private string _name;
-        [SerializeField] private string _description;
+        [SerializeField] [TextArea] private string _description;
         [SerializeField] private IngredientEssenceType[] _essenceRequirements;
 
         public string Name => _name;
