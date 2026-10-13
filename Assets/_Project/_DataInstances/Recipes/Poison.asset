@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb370ad7f3589841aff3567fecb5881, type: 3}
   m_Name: Poison
   m_EditorClassIdentifier: Potions_2026_Scripts::Potions2026.DataStructures.PotionRecipe
-  _name: 
-  _description: 
-  _essenceRequirements: 
+  _name: Poison
+  _description: You wouldn't want to drink this
+  _essenceRequirements: 0200000006000000
