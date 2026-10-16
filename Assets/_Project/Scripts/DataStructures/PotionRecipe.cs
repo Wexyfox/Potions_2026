@@ -12,11 +12,11 @@ namespace Potions2026.DataStructures
     {
         [SerializeField] private string _name;
         [SerializeField] [TextArea] private string _description;
-        [SerializeField] private IngredientEssenceType[] _essenceRequirements;
+        [SerializeField] private EssenceType[] _essenceRequirements;
 
         public string Name => _name;
         public string Description => _description;
-        public bool MatchesEssenceRequirements(IngredientEssenceType[] essences) => _essenceRequirements.SequenceEqual(essences);
-        public IngredientEssenceType[] EssenceRequirements => _essenceRequirements;
+        public bool MatchesEssenceRequirements(EssenceType[] essences) => _essenceRequirements.SequenceEqual(essences);
+        public EssenceType[] EssenceRequirements => _essenceRequirements;
     }
 }

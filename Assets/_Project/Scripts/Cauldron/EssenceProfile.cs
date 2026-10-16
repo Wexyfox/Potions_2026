@@ -6,30 +6,26 @@ using System.Linq;
 namespace Potions2026.Cauldron
 {
     /// <summary>
-    /// CauldronEssenceTracker is responsible for accepting essences and returning a potion when queried.
-    /// It is provided a list of valid potion recipes to allow for progression.
+    /// EssenceProfile is responsible for accepting essences and returning a potion when queried.
     /// It is meant to be used as a class within a monobehaviour wrapper.
     /// </summary>
-    public class CauldronEssenceTracker
+    public class EssenceProfile
     {
-        private Queue<IngredientEssenceType> _essencesAdded;
-        private List<PotionRecipe> _validRecipes;
+        private Queue<EssenceType> _essencesAdded;
 
         /// <summary>
-        /// Constructor with list of valid recipes it can create.
+        /// Constructor.
         /// </summary>
-        /// <param name="validRecipes">List of valid recipes.</param>
-        public CauldronEssenceTracker(List<PotionRecipe> validRecipes)
+        public EssenceProfile()
         {
-            _essencesAdded = new Queue<IngredientEssenceType>();
-            _validRecipes = validRecipes;
+            _essencesAdded = new Queue<EssenceType>();
         }
 
         /// <summary>
-        /// Adding essence for the cauldron to track.
+        /// Adding essence to be track.
         /// </summary>
         /// <param name="essence">Added essence.</param>
-        public void AddEssence(IngredientEssenceType essence)
+        public void AddEssence(EssenceType essence)
         {
             _essencesAdded.Enqueue(essence);
         }
@@ -38,11 +34,12 @@ namespace Potions2026.Cauldron
         /// Checks all provided recipe requirements against tracked essences.
         /// Returns a valid recipe if able, otherwise returns null.
         /// </summary>
+        /// /// <param name="validRecipes">Valid recipes.</param>
         /// <returns>A valid recipe, or a null one if unable.</returns>
-        public PotionRecipe Brew()
+        public PotionRecipe Brew(PotionRecipe[] validRecipes)
         {
-            IngredientEssenceType[] currentEssences = _essencesAdded.ToArray();
-            foreach (PotionRecipe recipe in _validRecipes)
+            EssenceType[] currentEssences = _essencesAdded.ToArray();
+            foreach (PotionRecipe recipe in validRecipes)
             {
                 if (recipe.EssenceRequirements.SequenceEqual(currentEssences))
                 {

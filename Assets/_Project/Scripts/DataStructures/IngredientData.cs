@@ -13,23 +13,23 @@ namespace Potions2026.DataStructures
     {
         [SerializeField] private string _name;
         [SerializeField] [TextArea] private string _description;
-        [SerializeField] private FlavourProfileType _flavourProfile;
-        [SerializeField] private SerializedDictionary<PreparationActionType, IngredientEssenceType> _essenceLookup;
+        [SerializeField] private FlavourType _flavourProfile;
+        [SerializeField] private SerializedDictionary<PreparationActionType, EssenceType> _essenceLookup;
 
         public string Name => _name;
         public string Description => _description;
-        public FlavourProfileType FlavourProfile => _flavourProfile;
+        public FlavourType FlavourProfile => _flavourProfile;
         public bool IsValidPreparation(PreparationActionType peparationAction) => _essenceLookup.ContainsKey(peparationAction);
-        public IngredientEssenceType EssenceFromPreparation(PreparationActionType peparationAction)
+        public EssenceType EssenceFromPreparation(PreparationActionType peparationAction)
         {
             if (peparationAction == PreparationActionType.NONE)
             {
-                return IngredientEssenceType.INVALID;
+                return EssenceType.INVALID;
             }
 
             if (!_essenceLookup.ContainsKey(peparationAction))
             {
-                return IngredientEssenceType.INVALID;
+                return EssenceType.INVALID;
             }
 
             return _essenceLookup[peparationAction];

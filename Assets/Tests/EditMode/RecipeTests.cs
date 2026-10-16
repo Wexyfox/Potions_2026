@@ -108,7 +108,7 @@ public class RecipeTests
         bool allRecipesAreValid = true;
         foreach (PotionRecipe recipe in recipes)
         {
-            if (recipe.EssenceRequirements.Contains(IngredientEssenceType.INVALID))
+            if (recipe.EssenceRequirements.Contains(EssenceType.INVALID))
             {
                 allRecipesAreValid = false;
                 Debug.LogWarning($"'{recipe.name}' has IngredientEssenceType.INVALID as an ingredient.");

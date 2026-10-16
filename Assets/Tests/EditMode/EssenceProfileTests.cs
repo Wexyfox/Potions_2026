@@ -6,27 +6,27 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class CauldronEssenceTrackerTests
+public class EssenceProfileTests
 {
     [Test]
     public void ReturnsValidPotionRecipe()
     {
         //Assign
-        List<PotionRecipe> allRecipes = GetAllRecipeScriptableObjects();
-        CauldronEssenceTracker essenceTracker = new CauldronEssenceTracker(allRecipes);
+        PotionRecipe[] allRecipes = GetAllRecipeScriptableObjects();
+        EssenceProfile essenceProfile = new EssenceProfile();
 
         //Act
         PotionRecipe testRecipe = allRecipes[0];
         Debug.Log($"Testing using {testRecipe.Name} recipe.");
 
-        IngredientEssenceType[] essenceRequirements = testRecipe.EssenceRequirements;
-        foreach (IngredientEssenceType essence in essenceRequirements)
+        EssenceType[] essenceRequirements = testRecipe.EssenceRequirements;
+        foreach (EssenceType essence in essenceRequirements)
         {
             Debug.Log($"{essence} added.");
-            essenceTracker.AddEssence(essence);
+            essenceProfile.AddEssence(essence);
         }
 
-        PotionRecipe returnedRecipe = essenceTracker.Brew();
+        PotionRecipe returnedRecipe = essenceProfile.Brew(allRecipes);
         bool returnedRecipeIsExpected = returnedRecipe == testRecipe;
         Debug.Log($"Test recipe is {testRecipe.Name}, returned recipe is {returnedRecipe.Name}.");
 
@@ -38,19 +38,19 @@ public class CauldronEssenceTrackerTests
     public void ReturnsNullPotionRecipe()
     {
         //Assign
-        List<PotionRecipe> allRecipes = GetAllRecipeScriptableObjects();
-        CauldronEssenceTracker essenceTracker = new CauldronEssenceTracker(allRecipes);
+        PotionRecipe[] allRecipes = GetAllRecipeScriptableObjects();
+        EssenceProfile essenceTracker = new EssenceProfile();
 
         //Act
-        essenceTracker.AddEssence(IngredientEssenceType.INVALID);
-        PotionRecipe returnedRecipe = essenceTracker.Brew();
+        essenceTracker.AddEssence(EssenceType.INVALID);
+        PotionRecipe returnedRecipe = essenceTracker.Brew(allRecipes);
         bool returnedRecipeIsNull = returnedRecipe == null;
 
         //Assert
         Assert.IsTrue(returnedRecipeIsNull);
     }
 
-    private List<PotionRecipe> GetAllRecipeScriptableObjects()
+    private PotionRecipe[] GetAllRecipeScriptableObjects()
     {
         string[] guids = AssetDatabase.FindAssets("t:PotionRecipe");
 
@@ -61,6 +61,6 @@ public class CauldronEssenceTrackerTests
             recipes.Add(AssetDatabase.LoadAssetAtPath<PotionRecipe>(path));
         }
 
-        return recipes;
+        return recipes.ToArray();
     }
 }
