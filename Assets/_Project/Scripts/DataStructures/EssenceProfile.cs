@@ -1,10 +1,9 @@
-using Potions2026.DataStructures;
 using Potions2026.DataStructures.Enums;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Potions2026.Cauldron
+namespace Potions2026.DataStructures
 {
     /// <summary>
     /// EssenceProfile is responsible for accepting essences and returning a matching potion recipe when queried.
