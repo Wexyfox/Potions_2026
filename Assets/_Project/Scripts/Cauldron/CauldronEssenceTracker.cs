@@ -6,11 +6,11 @@ using System.Linq;
 namespace Potions2026.Cauldron
 {
     /// <summary>
-    /// Cauldron is responsible for accepting ingredients and returning a potion when queried.
+    /// CauldronEssenceTracker is responsible for accepting essences and returning a potion when queried.
     /// It is provided a list of valid potion recipes to allow for progression.
     /// It is meant to be used as a class within a monobehaviour wrapper.
     /// </summary>
-    public class Cauldron
+    public class CauldronEssenceTracker
     {
         private Queue<IngredientEssenceType> _essencesAdded;
         private List<PotionRecipe> _validRecipes;
@@ -19,7 +19,7 @@ namespace Potions2026.Cauldron
         /// Constructor with list of valid recipes it can create.
         /// </summary>
         /// <param name="validRecipes">List of valid recipes.</param>
-        public Cauldron(List<PotionRecipe> validRecipes)
+        public CauldronEssenceTracker(List<PotionRecipe> validRecipes)
         {
             _essencesAdded = new Queue<IngredientEssenceType>();
             _validRecipes = validRecipes;

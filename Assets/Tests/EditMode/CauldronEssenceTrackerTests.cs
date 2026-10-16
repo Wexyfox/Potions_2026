@@ -6,14 +6,14 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class CauldronTests
+public class CauldronEssenceTrackerTests
 {
     [Test]
-    public void CauldronReturnsValidPotionRecipe()
+    public void ReturnsValidPotionRecipe()
     {
         //Assign
         List<PotionRecipe> allRecipes = GetAllRecipeScriptableObjects();
-        Cauldron cauldron = new Cauldron(allRecipes);
+        CauldronEssenceTracker essenceTracker = new CauldronEssenceTracker(allRecipes);
 
         //Act
         PotionRecipe testRecipe = allRecipes[0];
@@ -23,10 +23,10 @@ public class CauldronTests
         foreach (IngredientEssenceType essence in essenceRequirements)
         {
             Debug.Log($"{essence} added.");
-            cauldron.AddEssence(essence);
+            essenceTracker.AddEssence(essence);
         }
 
-        PotionRecipe returnedRecipe = cauldron.Brew();
+        PotionRecipe returnedRecipe = essenceTracker.Brew();
         bool returnedRecipeIsExpected = returnedRecipe == testRecipe;
         Debug.Log($"Test recipe is {testRecipe.Name}, returned recipe is {returnedRecipe.Name}.");
 
@@ -35,15 +35,15 @@ public class CauldronTests
     }
 
     [Test]
-    public void CauldronReturnsNullPotionRecipe()
+    public void ReturnsNullPotionRecipe()
     {
         //Assign
         List<PotionRecipe> allRecipes = GetAllRecipeScriptableObjects();
-        Cauldron cauldron = new Cauldron(allRecipes);
+        CauldronEssenceTracker essenceTracker = new CauldronEssenceTracker(allRecipes);
 
         //Act
-        cauldron.AddEssence(IngredientEssenceType.INVALID);
-        PotionRecipe returnedRecipe = cauldron.Brew();
+        essenceTracker.AddEssence(IngredientEssenceType.INVALID);
+        PotionRecipe returnedRecipe = essenceTracker.Brew();
         bool returnedRecipeIsNull = returnedRecipe == null;
 
         //Assert
