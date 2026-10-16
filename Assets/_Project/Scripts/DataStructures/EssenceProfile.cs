@@ -2,23 +2,25 @@ using Potions2026.DataStructures;
 using Potions2026.DataStructures.Enums;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Potions2026.Cauldron
 {
     /// <summary>
-    /// EssenceProfile is responsible for accepting essences and returning a potion when queried.
+    /// EssenceProfile is responsible for accepting essences and returning a matching potion recipe when queried.
     /// It is meant to be used as a class within a monobehaviour wrapper.
     /// </summary>
+    [System.Serializable]
     public class EssenceProfile
     {
-        private Queue<EssenceType> _essencesAdded;
+        [SerializeField] private List<EssenceType> _essencesAdded;
 
         /// <summary>
         /// Constructor.
         /// </summary>
         public EssenceProfile()
         {
-            _essencesAdded = new Queue<EssenceType>();
+            _essencesAdded = new List<EssenceType>();
         }
 
         /// <summary>
@@ -27,7 +29,7 @@ namespace Potions2026.Cauldron
         /// <param name="essence">Added essence.</param>
         public void AddEssence(EssenceType essence)
         {
-            _essencesAdded.Enqueue(essence);
+            _essencesAdded.Add(essence);
         }
 
         /// <summary>
