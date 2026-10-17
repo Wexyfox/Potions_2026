@@ -1,4 +1,4 @@
-namespace Potions2026.Interaction
+namespace Potions2026.MouseInteraction
 {
     /// <summary>
     /// IMouseHoverable is an interface for all hoverable objects that are hovered by using the mouse.

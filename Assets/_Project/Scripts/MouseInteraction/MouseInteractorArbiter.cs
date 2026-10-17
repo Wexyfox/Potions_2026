@@ -1,4 +1,4 @@
-namespace Potions2026.Interaction
+namespace Potions2026.MouseInteraction
 {
     /// <summary>
     /// MouseInteractorArbiter is responsible for tracking which interactables and hoverables being acted on.
@@ -33,8 +33,8 @@ namespace Potions2026.Interaction
         private IMouseHoverable _currentHoverable;
         private IMouseInteractable _currentInteractable;
 
-        public bool Hoverable => _currentHoverable != null && _currentInteractable == null;
-        public bool IsInteracting => _currentInteractable != null;
+        public bool Hoverable => _currentHoverable == null && _currentInteractable == null;
+        public bool Interactable => _currentInteractable == null;
 
         /// <summary>
         /// Starts tracking a hoverable.

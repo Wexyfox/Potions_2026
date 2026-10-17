@@ -1,4 +1,4 @@
-namespace Potions2026.Interaction
+namespace Potions2026.MouseInteraction
 {
     /// <summary>
     /// IMouseInteractable is an interface for all interactable objects that are interacted by using the mouse.
@@ -7,6 +7,6 @@ namespace Potions2026.Interaction
     {
         public bool ICanInteract();
         public void IInteract();
-        public void IEndInteraction();
+        public void IEndInteracting();
     }
 }
