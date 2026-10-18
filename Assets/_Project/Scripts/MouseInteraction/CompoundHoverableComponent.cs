@@ -6,11 +6,13 @@ using UnityEngine;
 namespace Potions2026.MouseInteraction
 {
     /// <summary>
-    /// CompoundHoverable is responsible for using multiple hoverables with a single entry point.
+    /// CompoundHoverableComponent is responsible for using multiple hoverables with a single entry point.
     /// Meant to be used to enable things such as outlines and particle effects at the same time.
     /// Has an optional IGatedComponent 
     /// </summary>
-    public class CompoundHoverable : MonoBehaviour, IMouseHoverable
+    
+    [System.Serializable]
+    public class CompoundHoverableComponent : IMouseHoverable
     {
         [Header("Hoverables")]
         [SerializeField] private List<InterfaceReference<IMouseHoverable>> _hoverables;
