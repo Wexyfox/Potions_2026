@@ -55,11 +55,11 @@ namespace Potions2026.MouseInteraction
         /// <summary>
         /// Ends hovering on all composition hoverables.
         /// </summary>
-        public void IEndHovering()
+        public void IStopHovering()
         {
             foreach (InterfaceReference<IMouseHoverable> hoverable in _hoverables)
             {
-                hoverable.Value.IEndHovering();
+                hoverable.Value.IStopHovering();
             }
         }
     }
