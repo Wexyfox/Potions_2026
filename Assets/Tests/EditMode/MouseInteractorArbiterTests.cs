@@ -7,7 +7,7 @@ public class MouseInteractorArbiterTests
     {
         public TestHoverable() { }
         public bool ICanHover() => true;
-        public void IHover() { }
+        public void IStartHovering() { }
         public void IEndHovering() { }
     }
 
@@ -15,7 +15,7 @@ public class MouseInteractorArbiterTests
     {
         public TestInteractable() { }
         public bool ICanInteract() => true;
-        public void IInteract() { }
+        public void IStartInteracting() { }
         public void IEndInteracting() { }
     }
 

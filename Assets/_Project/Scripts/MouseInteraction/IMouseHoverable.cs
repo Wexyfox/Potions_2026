@@ -6,7 +6,7 @@ namespace Potions2026.MouseInteraction
     public interface IMouseHoverable
     {
         public bool ICanHover();
-        public void IHover();
+        public void IStartHovering();
         public void IEndHovering();
     }
 }

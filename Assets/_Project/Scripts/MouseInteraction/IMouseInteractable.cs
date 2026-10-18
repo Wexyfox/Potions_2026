@@ -6,7 +6,7 @@ namespace Potions2026.MouseInteraction
     public interface IMouseInteractable
     {
         public bool ICanInteract();
-        public void IInteract();
+        public void IStartInteracting();
         public void IEndInteracting();
     }
 }
