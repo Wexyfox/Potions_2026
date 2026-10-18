@@ -7,6 +7,6 @@ namespace Potions2026.MouseInteraction
     {
         public bool ICanInteract();
         public void IStartInteracting();
-        public void IEndInteracting();
+        public void IStopInteracting();
     }
 }
