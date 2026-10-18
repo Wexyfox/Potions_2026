@@ -59,11 +59,15 @@ namespace Potions2026.MouseInteraction
         }
 
         /// <summary>
-        /// Starts tracking an interactable.
+        /// Starts tracking an interactable and automatically stops hovering if currently hovering.
         /// </summary>
         /// <param name="interactable">Interactable to start tracking</param>
         public void StartTrackingInteractable(IMouseInteractable interactable)
         {
+            if (_currentHoverable != null)
+            {
+                StopTrackingHoverable(_currentHoverable);
+            }
             _currentInteractable = interactable;
         }
 
