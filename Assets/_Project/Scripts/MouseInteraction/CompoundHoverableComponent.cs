@@ -8,7 +8,7 @@ namespace Potions2026.MouseInteraction
     /// <summary>
     /// CompoundHoverableComponent is responsible for using multiple hoverables with a single entry point.
     /// Meant to be used to enable things such as outlines and particle effects at the same time.
-    /// Has an optional IGatedComponent 
+    /// Has an optional IGatedComponent.
     /// </summary>
     
     [System.Serializable]
@@ -53,7 +53,7 @@ namespace Potions2026.MouseInteraction
         }
 
         /// <summary>
-        /// Ends hovering on all composition hoverables.
+        /// Stops hovering on all composition hoverables.
         /// </summary>
         public void IStopHovering()
         {
