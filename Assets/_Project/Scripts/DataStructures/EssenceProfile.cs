@@ -37,10 +37,10 @@ namespace Potions2026.DataStructures
         /// </summary>
         /// /// <param name="validRecipes">Valid recipes.</param>
         /// <returns>A valid recipe, or a null one if unable.</returns>
-        public PotionRecipe Brew(PotionRecipe[] validRecipes)
+        public RecipeData Brew(RecipeData[] validRecipes)
         {
             EssenceType[] currentEssences = _essencesAdded.ToArray();
-            foreach (PotionRecipe recipe in validRecipes)
+            foreach (RecipeData recipe in validRecipes)
             {
                 if (recipe.EssenceRequirements.SequenceEqual(currentEssences))
                 {

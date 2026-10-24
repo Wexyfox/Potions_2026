@@ -11,11 +11,11 @@ public class EssenceProfileTests
     public void ReturnsValidPotionRecipe()
     {
         //Assign
-        PotionRecipe[] allRecipes = GetAllRecipeScriptableObjects();
+        RecipeData[] allRecipes = GetAllRecipeScriptableObjects();
         EssenceProfile essenceProfile = new EssenceProfile();
 
         //Act
-        PotionRecipe testRecipe = allRecipes[0];
+        RecipeData testRecipe = allRecipes[0];
         Debug.Log($"Testing using {testRecipe.Name} recipe.");
 
         EssenceType[] essenceRequirements = testRecipe.EssenceRequirements;
@@ -25,7 +25,7 @@ public class EssenceProfileTests
             essenceProfile.AddEssence(essence);
         }
 
-        PotionRecipe returnedRecipe = essenceProfile.Brew(allRecipes);
+        RecipeData returnedRecipe = essenceProfile.Brew(allRecipes);
         bool returnedRecipeIsExpected = returnedRecipe == testRecipe;
         Debug.Log($"Test recipe is {testRecipe.Name}, returned recipe is {returnedRecipe.Name}.");
 
@@ -37,27 +37,27 @@ public class EssenceProfileTests
     public void ReturnsNullPotionRecipe()
     {
         //Assign
-        PotionRecipe[] allRecipes = GetAllRecipeScriptableObjects();
+        RecipeData[] allRecipes = GetAllRecipeScriptableObjects();
         EssenceProfile essenceTracker = new EssenceProfile();
 
         //Act
         essenceTracker.AddEssence(EssenceType.INVALID);
-        PotionRecipe returnedRecipe = essenceTracker.Brew(allRecipes);
+        RecipeData returnedRecipe = essenceTracker.Brew(allRecipes);
         bool returnedRecipeIsNull = returnedRecipe == null;
 
         //Assert
         Assert.IsTrue(returnedRecipeIsNull);
     }
 
-    private PotionRecipe[] GetAllRecipeScriptableObjects()
+    private RecipeData[] GetAllRecipeScriptableObjects()
     {
         string[] guids = AssetDatabase.FindAssets("t:PotionRecipe");
 
-        List<PotionRecipe> recipes = new();
+        List<RecipeData> recipes = new();
         foreach (string guid in guids)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
-            recipes.Add(AssetDatabase.LoadAssetAtPath<PotionRecipe>(path));
+            recipes.Add(AssetDatabase.LoadAssetAtPath<RecipeData>(path));
         }
 
         return recipes.ToArray();

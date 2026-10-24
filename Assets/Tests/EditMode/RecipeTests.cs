@@ -12,11 +12,11 @@ public class RecipeTests
     public void AllRecipesHaveNames()
     {
         //Assign
-        List<PotionRecipe> recipes = GetAllRecipeScriptableObjects();
+        List<RecipeData> recipes = GetAllRecipeScriptableObjects();
 
         //Act
         bool allRecipesHaveNames = true;
-        foreach (PotionRecipe recipe in recipes)
+        foreach (RecipeData recipe in recipes)
         {
             if (recipe.Name == string.Empty)
             {
@@ -33,7 +33,7 @@ public class RecipeTests
     public void NoDuplicateRecipeNames()
     {
         //Assign
-        List<PotionRecipe> recipes = GetAllRecipeScriptableObjects();
+        List<RecipeData> recipes = GetAllRecipeScriptableObjects();
 
         //Act
         bool noDuplicateRecipeNames = true;
@@ -57,11 +57,11 @@ public class RecipeTests
     public void AllRecipesHaveDescriptions()
     {
         //Assign
-        List<PotionRecipe> recipes = GetAllRecipeScriptableObjects();
+        List<RecipeData> recipes = GetAllRecipeScriptableObjects();
 
         //Act
         bool allRecipesHaveDescriptions = true;
-        foreach (PotionRecipe recipe in recipes)
+        foreach (RecipeData recipe in recipes)
         {
             if (recipe.Description == string.Empty)
             {
@@ -78,7 +78,7 @@ public class RecipeTests
     public void NoDuplicateRecipeDescriptions()
     {
         //Assign
-        List<PotionRecipe> recipes = GetAllRecipeScriptableObjects();
+        List<RecipeData> recipes = GetAllRecipeScriptableObjects();
 
         //Act
         bool noDuplicateRecipeDescriptions = true;
@@ -102,11 +102,11 @@ public class RecipeTests
     public void AllRecipesAreValid()
     {
         //Assign
-        List<PotionRecipe> recipes = GetAllRecipeScriptableObjects();
+        List<RecipeData> recipes = GetAllRecipeScriptableObjects();
 
         //Act
         bool allRecipesAreValid = true;
-        foreach (PotionRecipe recipe in recipes)
+        foreach (RecipeData recipe in recipes)
         {
             if (recipe.EssenceRequirements.Contains(EssenceType.INVALID))
             {
@@ -123,7 +123,7 @@ public class RecipeTests
     public void NoDuplicateEssenceRequirements()
     {
         //Assign
-        List<PotionRecipe> recipes = GetAllRecipeScriptableObjects();
+        List<RecipeData> recipes = GetAllRecipeScriptableObjects();
 
         //Act
         bool noDuplicateEssenceRequirements = true;
@@ -143,15 +143,15 @@ public class RecipeTests
         Assert.IsTrue(noDuplicateEssenceRequirements);
     }
 
-    private List<PotionRecipe> GetAllRecipeScriptableObjects()
+    private List<RecipeData> GetAllRecipeScriptableObjects()
     {
         string[] guids = AssetDatabase.FindAssets("t:PotionRecipe");
 
-        List<PotionRecipe> recipes = new();
+        List<RecipeData> recipes = new();
         foreach (string guid in guids)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
-            recipes.Add(AssetDatabase.LoadAssetAtPath<PotionRecipe>(path));
+            recipes.Add(AssetDatabase.LoadAssetAtPath<RecipeData>(path));
         }
 
         return recipes;

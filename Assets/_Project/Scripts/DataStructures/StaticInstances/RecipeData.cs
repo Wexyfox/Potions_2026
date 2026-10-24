@@ -5,10 +5,10 @@ using UnityEngine;
 namespace Potions2026.DataStructures
 {
     /// <summary>
-    /// PotionRecipe is responsible for holding static information about a potion.
+    /// RecipeData is responsible for holding static information about a potion.
     /// </summary>
-    [CreateAssetMenu(fileName = "PotionRecipe", menuName = "Data/PotionRecipe")]
-    public class PotionRecipe : ScriptableObject
+    [CreateAssetMenu(fileName = "RecipeData", menuName = "Data/Recipe")]
+    public class RecipeData : ScriptableObject
     {
         [SerializeField] private string _name;
         [SerializeField] [TextArea] private string _description;
