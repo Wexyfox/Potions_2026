@@ -59,6 +59,21 @@ namespace Potions2026.MouseInteraction
         }
 
         /// <summary>
+        /// Queries if the hoverable provided is the same hoverable that is being tracked.
+        /// If the query hoverable is null it returns false as default.
+        /// </summary>
+        /// <param name="hoverable">Hoverable being queried.</param>
+        /// <returns>If the query hoverable matches the tracked hoverable.</returns>
+        public bool IsTrackingHoverable(IMouseHoverable hoverable)
+        {
+            if (hoverable == null)
+            {
+                return false;
+            }
+            return hoverable == _currentHoverable;
+        }
+
+        /// <summary>
         /// Starts tracking an interactable and automatically stops hovering if currently hovering.
         /// </summary>
         /// <param name="interactable">Interactable to start tracking</param>
@@ -82,6 +97,21 @@ namespace Potions2026.MouseInteraction
                 return;
             }
             _currentInteractable = null;
+        }
+
+        /// <summary>
+        /// Queries if the interactable provided is the same interactable that is being tracked.
+        /// If the query interactable is null it returns false as default.
+        /// </summary>
+        /// <param name="interactable">Interactable being queried.</param>
+        /// <returns>If the query interactable matches the tracked interactable.</returns>
+        public bool IsTrackingInteractable(IMouseInteractable interactable)
+        {
+            if (interactable == null)
+            {
+                return false;
+            }
+            return interactable == _currentInteractable;
         }
     }
 }
